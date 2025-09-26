@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="news_image_content_description" />
+    <string name="share_news_content_description">Share</string>
+</resources>
