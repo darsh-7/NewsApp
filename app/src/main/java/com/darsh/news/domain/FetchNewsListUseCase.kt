@@ -1,9 +1,8 @@
 package com.darsh.news.domain
 
 import android.util.Log
-import com.darsh.news.data.remote.api.NewsCallable
-import com.darsh.news.data.remote.api.NewsConstant
-import com.darsh.news.data.remote.data_model.Article
+import com.darsh.news.data.remote.api.news.NewsCallable
+import com.darsh.news.data.Constant
 import com.darsh.news.data.remote.data_model.News
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,7 +15,7 @@ class FetchNewsListUseCase {
      operator fun invoke()/*: List<Article>*/ {
         val retrofit = Retrofit
             .Builder()
-            //.baseUrl(NewsConstant.baseUrl)
+            .baseUrl(Constant.baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val newsCall = retrofit.create(NewsCallable::class.java).getNews().enqueue(object :

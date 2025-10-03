@@ -5,13 +5,11 @@ import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.transition.Visibility
-import com.darsh.news.data.remote.api.NewsCallable
+import com.darsh.news.data.remote.api.news.NewsCallable
 import com.darsh.news.data.remote.data_model.Article
 import com.darsh.news.data.remote.data_model.News
 import com.darsh.news.databinding.ActivityMainBinding
 import com.darsh.news.presentation.NewsAdapter
-import com.darsh.news.presentation.NewsFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
