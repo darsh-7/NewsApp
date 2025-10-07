@@ -70,6 +70,8 @@ dependencies {
     implementation(libs.glide)
 
     implementation (libs.androidx.swiperefreshlayout)
+    implementation ("androidx.navigation:navigation-fragment:2.9.3")
+
 
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
