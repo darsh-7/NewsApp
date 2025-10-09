@@ -1,48 +1,80 @@
 package com.darsh.news.presentation.authentication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.darsh.news.R
 import com.darsh.news.databinding.FragmentSignInBinding
+import com.darsh.news.firebaseLogic.AuthViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SignInFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SignInFragment : Fragment() {
 
     lateinit var binding: FragmentSignInBinding
-
+    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentSignInBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.textRegisterFull.setOnClickListener {
             it.findNavController().navigate(R.id.action_signInFragment_to_signUpFragment2)
         }
+
         binding.buttonSignIn.setOnClickListener {
             if (isInputValid()) {
-                it.findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
+                val email = binding.inputEmail.text.toString().trim()
+                val password = binding.inputPassword.text.toString()
+                authViewModel.login(email, password)
             }
+        }
+
+        binding.textForgotPassword.setOnClickListener {
+            it.findNavController().navigate(R.id.action_signInFragment_to_resetPasswordFragment)
+        }
+
+        authViewModel.authResult.observe(viewLifecycleOwner) { result ->
+            result.onSuccess { user ->
+                if (user?.isEmailVerified == true) {
+                    Toast.makeText(requireContext(), "Welcome, ${user.email}", Toast.LENGTH_SHORT).show()
+                    // Navigate to home and clear back stack
+                    findNavController().navigate(R.id.action_signInFragment_to_homeFragment, null, androidx.navigation.NavOptions.Builder()
+                        .setPopUpTo(R.id.signInFragment, true)
+                        .build())
+                } else {
+                    Toast.makeText(requireContext(), "Please verify your email", Toast.LENGTH_SHORT).show()
+                    // Assuming you have a fragment for email verification
+                    // If not, you can remove this navigation or create the fragment and action
+                    // findNavController().navigate(R.id.action_signInFragment_to_verifyEmailFragment)
+                }
+            }
+            result.onFailure {
+                Toast.makeText(requireContext(), "Login failed: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = authViewModel.getCurrentUser()
+        if (currentUser != null && currentUser.isEmailVerified) {
+            // User is already signed in and verified, navigate to home
+            findNavController().navigate(R.id.action_signInFragment_to_homeFragment, null, androidx.navigation.NavOptions.Builder()
+                .setPopUpTo(R.id.signInFragment, true)
+                .build())
         }
     }
 

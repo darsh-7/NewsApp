@@ -1,18 +1,22 @@
 package com.darsh.news.presentation.authentication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.darsh.news.R
 import com.darsh.news.databinding.FragmentSignUpBinding
+import com.darsh.news.firebaseLogic.AuthViewModel
 
 class SignUpFragment : Fragment() {
 
-
     private lateinit var binding: FragmentSignUpBinding
+    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,17 +30,46 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Link the Sign Up button to the validation function
+        // Link the Sign Up button to the validation function and Firebase logic
         binding.buttonSignUp.setOnClickListener {
             if (isInputValid()) {
-                // Navigate only if all inputs are valid
-                findNavController().navigate(R.id.action_signUpFragment2_to_signInFragment)
+                val email = binding.inputEmail.text.toString().trim()
+                val password = binding.inputPassword.text.toString()
+                authViewModel.signUp(email, password)
             }
         }
 
         // Link the Sign In link to navigation
         binding.textSignInFull.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment2_to_signInFragment)
+        }
+
+        // Observer for the sign-up result
+        authViewModel.authResult.observe(viewLifecycleOwner) { result ->
+            result.onSuccess { user ->
+                // If sign-up is successful, send a verification email
+                if (user != null) {
+                    authViewModel.sendVerificationEmail(user)
+                }
+            }
+            result.onFailure { exception ->
+                // Show a toast if sign-up fails
+                Toast.makeText(requireContext(), "Signup failed: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Observer for the verification email sending result
+        authViewModel.verificationResult.observe(viewLifecycleOwner) { result ->
+            result.onSuccess {
+                // On success, notify user and navigate to the sign-in screen
+                Toast.makeText(requireContext(), "Check your Inbox/Spam for verification email", Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.action_signUpFragment2_to_verifyFragment)
+            }
+            result.onFailure { exception ->
+                // On failure, log the error and notify the user
+                Toast.makeText(requireContext(), "Failed to send verification email: ${exception.message}", Toast.LENGTH_SHORT).show()
+                Log.e("SignUpFragment", "Failed to send verification email", exception)
+            }
         }
     }
 
