@@ -14,8 +14,8 @@
             android:id="@+id/action_signInFragment_to_signUpFragment2"
             app:destination="@id/signUpFragment2" />
         <action
-            android:id="@+id/action_signInFragment_to_favouritFragment"
-            app:destination="@id/favouritFragment" />
+            android:id="@+id/action_signInFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment2"
@@ -31,4 +31,20 @@
         android:name="com.darsh.news.presentation.newsList.favouritFragment"
         android:label="fragment_favourit"
         tools:layout="@layout/fragment_favourit" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.darsh.news.presentation.newsList.NewsFragment"
+        android:label="NewsFragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.darsh.news.presentation.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_favouritFragment"
+            app:destination="@id/favouritFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
 </navigation>

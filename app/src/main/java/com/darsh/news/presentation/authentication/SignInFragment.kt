@@ -41,37 +41,40 @@ class SignInFragment : Fragment() {
         }
         binding.buttonSignIn.setOnClickListener {
             if (isInputValid()) {
-                it.findNavController().navigate(R.id.action_signInFragment_to_favouritFragment)
+                it.findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
             }
-        }    }
-private fun isInputValid(): Boolean {
-    // Clear previous errors before running validation
-    clearErrors()
-
-    val email = binding.inputEmail.text.toString().trim()
-    val password = binding.inputPassword.text.toString()
-    var isValid = true
-
-    // 2. Email Validation
-    if (email.isBlank()) {
-        binding.layoutEmail.error = "Email is required"
-        isValid = false
-    } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-        binding.layoutEmail.error = "Invalid email format"
-        isValid = false
+        }
     }
 
-    // 3. Password Validation (Length)
-    if (password.isBlank()) {
-        binding.layoutPassword.error = "Password is required"
-        isValid = false
+    private fun isInputValid(): Boolean {
+        // Clear previous errors before running validation
+        clearErrors()
+
+        val email = binding.inputEmail.text.toString().trim()
+        val password = binding.inputPassword.text.toString()
+        var isValid = true
+
+        // 2. Email Validation
+        if (email.isBlank()) {
+            binding.layoutEmail.error = "Email is required"
+            isValid = false
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.layoutEmail.error = "Invalid email format"
+            isValid = false
+        }
+
+        // 3. Password Validation (Length)
+        if (password.isBlank()) {
+            binding.layoutPassword.error = "Password is required"
+            isValid = false
+        }
+
+        return isValid
     }
 
-    return isValid
+    // Helper function to clear all active errors on TextInputLayouts
+    private fun clearErrors() {
+        binding.layoutEmail.error = null
+        binding.layoutPassword.error = null
+    }
 }
-
-// Helper function to clear all active errors on TextInputLayouts
-private fun clearErrors() {
-    binding.layoutEmail.error = null
-    binding.layoutPassword.error = null
-}}
