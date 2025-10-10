@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.androidx.datastore.core)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.firebase.inappmessaging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
