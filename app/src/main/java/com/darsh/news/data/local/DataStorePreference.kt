@@ -31,7 +31,7 @@ class DataStorePreference (
         }
     }
 
-    suspend fun readIsFirstTimeEnterApp(): String {
+     fun readIsFirstTimeEnterApp(): String {
         return runBlocking {
             context.dataStore.data.first()[PreferenceKeys.countryName] ?: ""
         }

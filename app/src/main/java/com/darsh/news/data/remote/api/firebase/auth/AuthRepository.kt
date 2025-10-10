@@ -1,5 +1,3 @@
-package com.darsh.news.firebaseLogic
-
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.darsh.news.data.local.DataStorePreference
 import com.darsh.news.data.remote.api.news.NewsCallable
 import com.darsh.news.data.remote.data_model.Article
 import com.darsh.news.data.remote.data_model.News
@@ -61,7 +62,8 @@ class NewsFragment : Fragment() {
             .build()
 
         val newsCall = retrofit.create(NewsCallable::class.java)
-        newsCall.getNews().enqueue(object : Callback<News> {
+        val country = DataStorePreference(requireContext()).readIsFirstTimeEnterApp()
+        newsCall.getNews(country = country).enqueue(object : Callback<News> {
             override fun onResponse(call: Call<News>, response: Response<News>) {
                 binding.progressCircular.isVisible = false
                 binding.swiperefresh.isRefreshing = false
