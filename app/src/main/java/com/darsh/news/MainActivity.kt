@@ -12,7 +12,6 @@ import com.darsh.news.data.remote.data_model.Article
 import com.darsh.news.data.remote.data_model.News
 import com.darsh.news.databinding.ActivityMainBinding
 import com.darsh.news.firebaseLogic.AuthViewModel
-import com.darsh.news.firebaseTempUi.LoginActivity
 import com.darsh.news.presentation.NewsAdapter
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,11 +40,6 @@ class MainActivity : AppCompatActivity() {
 //                .replace(R.id.news_fragment_container, NewsFragment()) // Or .add() if you don't plan to replace
 //                .commit()
 //        }
-        binding.logout.setOnClickListener {
-            authViewModel.logout()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
 
         getNews()
 

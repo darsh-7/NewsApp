@@ -16,16 +16,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".firebaseTempUi.ResetPasswordActivity"
+            android:name=".MainActivity"
             android:exported="false" />
+
         <activity
-            android:name=".firebaseTempUi.VerifyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".firebaseTempUi.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".firebaseTempUi.LoginActivity"
+            android:name=".homeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,9 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.darsh.news.firebaseLogic
+package com.darsh.news.presentation.authentication
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

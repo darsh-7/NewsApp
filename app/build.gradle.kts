@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+
 }
 
 android {
@@ -71,6 +72,8 @@ dependencies {
     implementation(libs.glide)
 
     implementation (libs.androidx.swiperefreshlayout)
+    implementation ("androidx.navigation:navigation-fragment:2.9.3")
+
 
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
@@ -80,4 +83,5 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:34.3.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation ("com.google.android.gms:play-services-auth")
+
 }

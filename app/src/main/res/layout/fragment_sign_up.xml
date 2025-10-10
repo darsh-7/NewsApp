@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.authentication.SignUpFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:gravity="center_horizontal">
+
+        <!-- 1. Logo/Header Area -->
+        <ImageView
+            android:id="@+id/logo_header"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="64dp"
+            android:contentDescription="NewsWatch Logo"
+            android:src="@drawable/ic_launcher_background"
+            tools:src="@tools:sample/avatars" />
+
+        <!-- Space separator (similar to the 80dp margin block in sign-in) -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <!-- 2. Name Input Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:hint="User Name"
+            app:hintTextColor="#00BFFF"
+            app:boxStrokeColor="#00BFFF"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 3. Email Input Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:layout_marginTop="24dp"
+            app:hintTextColor="#00BFFF"
+            app:boxStrokeColor="#00BFFF"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 4. Password Input Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="Password"
+            app:hintTextColor="#00BFFF"
+            app:boxStrokeColor="#00BFFF"
+            app:passwordToggleEnabled="true"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 5. Confirm Password Input Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_confirm_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="Confirm Password"
+            app:hintTextColor="#00BFFF"
+            app:boxStrokeColor="#00BFFF"
+            app:passwordToggleEnabled="true"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 6. Sign Up Button -->
+        <Button
+            android:id="@+id/button_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#00BFFF"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:cornerRadius="8dp" />
+
+        <!-- Empty space to push Sign In link to the bottom -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="16dp"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+        <!-- 7. Sign In Link -->
+        <TextView
+            android:id="@+id/text_sign_in_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:padding="8dp"
+            android:text="Already have an account? Sign In"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

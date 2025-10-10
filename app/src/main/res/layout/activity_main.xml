@@ -11,12 +11,6 @@
     android:paddingTop="26dp"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/logout"
-        android:text="log out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
