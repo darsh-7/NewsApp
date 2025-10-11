@@ -73,7 +73,7 @@ class NewsFragment : Fragment() {
             override fun onResponse(call: Call<News>, response: Response<News>) {
                 binding.progressCircular.isVisible = false
                 binding.swiperefresh.isRefreshing = false
-
+//
 
                 if (response.isSuccessful) {
                     val news = response.body()

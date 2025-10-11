@@ -17,7 +17,7 @@ import com.darsh.news.presentation.ui.adapters.HomeAdapter
 import com.darsh.news.presentation.ui.fragments.HomeViewModel
 
 class HomeFragment : Fragment() {
-
+//
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
