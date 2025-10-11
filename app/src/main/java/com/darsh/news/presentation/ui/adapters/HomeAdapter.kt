@@ -5,20 +5,39 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.darsh.news.databinding.CategoriesItemBinding
 
-class HomeAdapter(private val items: List<String>) :
-    RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class HomeAdapter(private var categories: List<String>) :
+    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
-    inner class HomeViewHolder(val binding: CategoriesItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    private var onItemClickListener: ((String) -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        val binding = CategoriesItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HomeViewHolder(binding)
+    fun setOnItemClickListener(listener: (String) -> Unit) {
+        onItemClickListener = listener
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.binding.categoryTitle.text = items[position]
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = CategoriesItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount() = categories.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val category = categories[position]
+        holder.binding.categoryTitle.text = category
+
+        holder.binding.root.setOnClickListener {
+            onItemClickListener?.invoke(category)
+        }
+    }
+
+    fun updateList(newList: List<String>) {
+        categories = newList
+        notifyDataSetChanged()
+    }
+
+    class ViewHolder(val binding: CategoriesItemBinding) : RecyclerView.ViewHolder(binding.root)
 }
