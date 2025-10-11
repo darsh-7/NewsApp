@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
     app:startDestination="@id/signInFragment">
-//
+
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.darsh.news.presentation.authentication.SignInFragment"
