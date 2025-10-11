@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.darsh.news" />
+                  <option name="mobileSdkAppId" value="1:862299672631:android:b5b09bce4fed311c012fb2" />
+                  <option name="projectId" value="depi-news" />
+                  <option name="projectNumber" value="862299672631" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
