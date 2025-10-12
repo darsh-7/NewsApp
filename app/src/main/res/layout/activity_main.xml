@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android/tools"
@@ -10,13 +8,11 @@
     android:orientation="vertical"
     android:paddingTop="26dp"
     tools:context=".MainActivity">
-
     <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
-
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -25,53 +21,22 @@
             android:theme="@style/ThemeOverlay.Material3.ActionBar"
             app:title="News App"
             app:titleTextColor="@color/black" />
-
     </com.google.android.material.appbar.AppBarLayout>
-
-    <!--    <androidx.fragment.app.FragmentContainerView-->
-    <!--        android:id="@+id/news_fragment_container"-->
-    <!--        android:name="com.darsh.news.presentation.NewsFragment" -->
-    <!--    android:layout_width="match_parent"-->
-    <!--    android:layout_height="match_parent"-->
-    <!--    app:layout_constraintTop_toTopOf="parent"-->
-    <!--    app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--    app:layout_constraintStart_toStartOf="parent"-->
-    <!--    app:layout_constraintEnd_toEndOf="parent"-->
-    <!--    tools:layout="@layout/fragment_news" />-->
+    <!-- <androidx.fragment.app.FragmentContainerView-->
+    <!-- android:id="@+id/news_fragment_container"-->
+    <!-- android:name="com.darsh.news.presentation.NewsFragment" -->
+    <!-- android:layout_width="match_parent"-->
+    <!-- android:layout_height="match_parent"-->
+    <!-- app:layout_constraintTop_toTopOf="parent"-->
+    <!-- app:layout_constraintBottom_toBottomOf="parent"-->
+    <!-- app:layout_constraintStart_toStartOf="parent"-->
+    <!-- app:layout_constraintEnd_toEndOf="parent"-->
+    <!-- tools:layout="@layout/fragment_news" />-->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <FrameLayout
-            android:layout_width="match_parent"
+        <FrameLayout android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <ProgressBar
-                android:id="@+id/progress_circular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/news_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools1:listitem="@layout/article_list_item" />
-
-
-        </FrameLayout>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    <!-- Fragment Container -->
-    <!--    <androidx.fragment.app.FragmentContainerView-->
-    <!--        android:id="@+id/fragment_container"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
-
-</LinearLayout>
+            <ProgressBar android:id="@+id/progress_circular" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" /> <androidx.recyclerview.widget.RecyclerView android:id="@+id/news_list" android:layout_width="match_parent" android:layout_height="match_parent" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" tools1:listitem="@layout/article_list_item" /> </FrameLayout> </androidx.swiperefreshlayout.widget.SwipeRefreshLayout> <!-- Fragment Container --> <!-- <androidx.fragment.app.FragmentContainerView--> <!-- android:id="@+id/fragment_container"--> <!-- android:layout_width="0dp"--> <!-- android:layout_height="0dp"--> <!-- app:layout_constraintBottom_toBottomOf="parent"--> <!-- app:layout_constraintStart_toStartOf="parent"--> <!-- app:layout_constraintEnd_toEndOf="parent" />--> </LinearLayout>

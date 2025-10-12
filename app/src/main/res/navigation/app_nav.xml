@@ -33,6 +33,16 @@
             app:destination="@id/verifyFragment" />
     </fragment>
     <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.darsh.news.presentation.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+    </fragment>
+
+    <action
+        android:id="@+id/action_settingsFragment_to_favouritFragment"
+        app:destination="@id/favouritFragment" />
+    <fragment
         android:id="@+id/favouritFragment"
         android:name="com.darsh.news.presentation.newsList.favouritFragment"
         android:label="fragment_favourit"
@@ -52,6 +62,9 @@
         <action
             android:id="@+id/action_homeFragment_to_favouritFragment"
             app:destination="@id/favouritFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/verifyFragment"

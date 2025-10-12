@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.darsh.news.data.local.DataStorePreference
@@ -39,13 +40,18 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         setupRecyclerView()
+        val selectedCategory = arguments?.getString("category")
+
+        getNews(selectedCategory)
 
         binding.swiperefresh.setOnRefreshListener {
-            getNews()
+            getNews(selectedCategory)
         }
 
-        getNews()
+
     }
 
     private fun setupRecyclerView() {
@@ -53,7 +59,7 @@ class NewsFragment : Fragment() {
         binding.newsList.adapter = newsAdapter
     }
 
-    private fun getNews() {
+    private fun getNews(selectedCategory: String?) {
         binding.progressCircular.isVisible = true
         val retrofit = Retrofit
             .Builder()
@@ -63,10 +69,12 @@ class NewsFragment : Fragment() {
 
         val newsCall = retrofit.create(NewsCallable::class.java)
         val country = DataStorePreference(requireContext()).readIsFirstTimeEnterApp()
-        newsCall.getNews(country = country).enqueue(object : Callback<News> {
+        newsCall.getNews(country = country, category=selectedCategory).enqueue(object : Callback<News> {
             override fun onResponse(call: Call<News>, response: Response<News>) {
                 binding.progressCircular.isVisible = false
                 binding.swiperefresh.isRefreshing = false
+//
+
                 if (response.isSuccessful) {
                     val news = response.body()
                     val articles = news?.articles
@@ -74,6 +82,7 @@ class NewsFragment : Fragment() {
                         showNews(articles)
                     }
                 }
+
             }
 
             override fun onFailure(call: Call<News>, t: Throwable) {
@@ -93,3 +102,6 @@ class NewsFragment : Fragment() {
 
     }
 }
+
+
+
