@@ -41,12 +41,16 @@
 
     <action
         android:id="@+id/action_settingsFragment_to_favouritFragment"
-        app:destination="@id/favouritFragment" />
+        app:destination="@id/FavouritFragment" />
     <fragment
-        android:id="@+id/favouritFragment"
-        android:name="com.darsh.news.presentation.newsList.favouritFragment"
+        android:id="@+id/FavouritFragment"
+        android:name="com.darsh.news.presentation.newsList.FavouritFragment"
         android:label="fragment_favourit"
-        tools:layout="@layout/fragment_favourit" />
+        tools:layout="@layout/fragment_favourit" >
+        <action
+            android:id="@+id/action_FavouritFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.darsh.news.presentation.newsList.NewsFragment"
@@ -61,7 +65,7 @@
             app:destination="@id/newsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_favouritFragment"
-            app:destination="@id/favouritFragment" />
+            app:destination="@id/FavouritFragment" />
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />

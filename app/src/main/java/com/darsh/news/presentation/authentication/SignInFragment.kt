@@ -49,20 +49,20 @@ class SignInFragment : Fragment() {
         authViewModel.authResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess { user ->
                 if (user?.isEmailVerified == true) {
-                    Toast.makeText(requireContext(), "Welcome, ${user.email}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.welcome, user.email), Toast.LENGTH_SHORT).show()
                     // Navigate to home and clear back stack
                     findNavController().navigate(R.id.action_signInFragment_to_homeFragment, null, androidx.navigation.NavOptions.Builder()
                         .setPopUpTo(R.id.signInFragment, true)
                         .build())
                 } else {
-                    Toast.makeText(requireContext(), "Please verify your email", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.verify_email), Toast.LENGTH_SHORT).show()
                     // Assuming you have a fragment for email verification
                     // If not, you can remove this navigation or create the fragment and action
                     // findNavController().navigate(R.id.action_signInFragment_to_verifyEmailFragment)
                 }
             }
             result.onFailure {
-                Toast.makeText(requireContext(), "Login failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),  getString(R.string.login_failed, it.message), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -88,16 +88,16 @@ class SignInFragment : Fragment() {
 
         // 2. Email Validation
         if (email.isBlank()) {
-            binding.layoutEmail.error = "Email is required"
+            binding.layoutEmail.error = getString(R.string.email_required)
             isValid = false
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.layoutEmail.error = "Invalid email format"
+            binding.layoutEmail.error = getString(R.string.invalid_email)
             isValid = false
         }
 
         // 3. Password Validation (Length)
         if (password.isBlank()) {
-            binding.layoutPassword.error = "Password is required"
+            binding.layoutPassword.error = getString(R.string.password_required)
             isValid = false
         }
 

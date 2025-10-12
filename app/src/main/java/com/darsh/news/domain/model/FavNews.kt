@@ -1,7 +1,7 @@
 package com.darsh.news.domain.model
 
-class FavNews {
-    val id : Int = 0 //recommended
-    val title: String = ""
+data class FavNews (
+    val id : Int = 0,
+    val title: String ,
     val url: String = ""
-}
+)

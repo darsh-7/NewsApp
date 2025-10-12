@@ -13,7 +13,7 @@ import com.darsh.news.data.remote.data_model.News
 import com.darsh.news.databinding.ActivityMainBinding
 import com.darsh.news.firebaseLogic.AuthViewModel
 import com.darsh.news.presentation.NewsAdapter
-import com.darsh.news.presentation.ui.fragments.HomeFragment
+import com.darsh.news.presentation.ui.fragments.HomeViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
