@@ -3,6 +3,7 @@ package com.darsh.news.firebaseLogic
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.darsh.news.presentation.authentication.AuthRepository
 import com.google.firebase.auth.FirebaseUser
 
 class AuthViewModel : ViewModel() {

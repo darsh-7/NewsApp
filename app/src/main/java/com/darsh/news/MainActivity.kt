@@ -1,14 +1,17 @@
 package com.darsh.news
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.darsh.news.data.remote.api.news.NewsCallable
 import com.darsh.news.data.remote.data_model.Article
 import com.darsh.news.data.remote.data_model.News
 import com.darsh.news.databinding.ActivityMainBinding
+import com.darsh.news.firebaseLogic.AuthViewModel
 import com.darsh.news.presentation.NewsAdapter
 import com.darsh.news.presentation.ui.fragments.HomeFragment
 import retrofit2.Call
@@ -18,6 +21,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
+    private val authViewModel: AuthViewModel by viewModels()
 
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {

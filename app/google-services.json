@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "862299672631",
+    "project_id": "depi-news",
+    "storage_bucket": "depi-news.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862299672631:android:b5b09bce4fed311c012fb2",
+        "android_client_info": {
+          "package_name": "com.darsh.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862299672631-l9bdmsgc0i45074fp0henvkescuf6tuu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darsh.news",
+            "certificate_hash": "7a766045e518f51db205c555b5afa244d886b8e3"
+          }
+        },
+        {
+          "client_id": "862299672631-o1po2tpm6040p0a2r40kt2maddecn9dp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzfEqcOKn32FqwBzeznuv8I8r9H47dRX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862299672631-o1po2tpm6040p0a2r40kt2maddecn9dp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

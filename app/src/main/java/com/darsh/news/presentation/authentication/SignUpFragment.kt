@@ -14,7 +14,6 @@ import com.darsh.news.databinding.FragmentSignUpBinding
 import com.darsh.news.firebaseLogic.AuthViewModel
 
 class SignUpFragment : Fragment() {
-
     private lateinit var binding: FragmentSignUpBinding
     private val authViewModel: AuthViewModel by viewModels()
 
