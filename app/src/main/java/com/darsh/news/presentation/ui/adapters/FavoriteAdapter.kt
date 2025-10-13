@@ -1,8 +1,10 @@
 package com.darsh.news.presentation.ui.adapters
 
 import android.app.Activity
+import android.content.Intent
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.darsh.news.databinding.FavoritListItemBinding
@@ -26,14 +28,22 @@ class FavoriteAdapter(val activity: Activity, val favoriteNews: ArrayList<FavNew
         holder: FavoriteViewHolder,
         position: Int
     ) {
-      holder.binding.newsTitle.text=favoriteNews[position].title
-        holder.binding.newsSubtitle.text=favoriteNews[position].url
+        val fav = favoriteNews[position]
+      holder.binding.newsTitle.text=fav.title
+        holder.binding.newsUrl.text=fav.url
         holder.binding.buttonShare.setOnClickListener() {
             ShareCompat.IntentBuilder(activity).setType("text/plain")
                 .setChooserTitle("Share article with")
-                .setText(favoriteNews[position].url)
+                .setText(fav.url)
                 .startChooser()
         }
+
+        holder.binding.favContainer.setOnClickListener {
+            val uri = fav.url.toUri()
+            val i = Intent(Intent.ACTION_VIEW, uri)
+            activity.startActivity(i)
+        }
+
 
     }
 
