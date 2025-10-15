@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -37,9 +39,9 @@ android {
         viewBinding = true
     }
 }
-
+//
 dependencies {
-
+    implementation ("com.squareup.okhttp3:okhttp:4.12.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -52,6 +54,9 @@ dependencies {
     implementation(libs.androidx.datastore.core)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.firebase.inappmessaging)
+   // implementation(libs.firebase.auth.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -77,5 +82,9 @@ dependencies {
 
     //implementation("androidx.navigation:navigation-fragment-ktx")
 
-
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:34.3.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation ("com.google.android.gms:play-services-auth")
+    implementation("com.google.firebase:firebase-firestore")
 }

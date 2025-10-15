@@ -13,3 +13,15 @@
 .externalNativeBuild
 .cxx
 local.properties
+/.idea/AndroidProjectSystem.xml
+/.idea/copilot.data.migration.agent.xml
+/.idea/copilot.data.migration.ask.xml
+/.idea/copilot.data.migration.ask2agent.xml
+/.idea/copilot.data.migration.edit.xml
+/.idea/DDGenerateAssetsClassConfig.xml
+/.idea/deviceManager.xml
+/.idea/FlutterxFullConfig.xml
+/app/google-services.json
+/.idea/runConfigurations.xml
+/.idea/studiobot.xml
+/.idea/vcs.xml
