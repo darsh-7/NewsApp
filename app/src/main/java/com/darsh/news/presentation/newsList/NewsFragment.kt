@@ -40,15 +40,15 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-        setupRecyclerView()
+        val selectedCountry = arguments?.getString("selectedCountry") ?: "us"
         val selectedCategory = arguments?.getString("category")
 
-        getNews(selectedCategory)
+        setupRecyclerView()
+
+        getNews(selectedCategory, selectedCountry)
 
         binding.swiperefresh.setOnRefreshListener {
-            getNews(selectedCategory)
+            getNews(selectedCategory, selectedCountry)
         }
 
 
@@ -59,21 +59,21 @@ class NewsFragment : Fragment() {
         binding.newsList.adapter = newsAdapter
     }
 
-    private fun getNews(selectedCategory: String?) {
+    private fun getNews(selectedCategory: String?, selectedCountry: String) {
         binding.progressCircular.isVisible = true
-        val retrofit = Retrofit
-            .Builder()
+
+        val retrofit = Retrofit.Builder()
             .baseUrl("https://newsapi.org")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val newsCall = retrofit.create(NewsCallable::class.java)
-        val country = DataStorePreference(requireContext()).readIsFirstTimeEnterApp()
-        newsCall.getNews(country = country, category=selectedCategory).enqueue(object : Callback<News> {
-            override fun onResponse(call: Call<News>, response: Response<News>) {
-                binding.progressCircular.isVisible = false
-                binding.swiperefresh.isRefreshing = false
-//
+
+        newsCall.getNews(country = selectedCountry, category = selectedCategory)
+            .enqueue(object : Callback<News> {
+                override fun onResponse(call: Call<News>, response: Response<News>) {
+                    binding.progressCircular.isVisible = false
+                    binding.swiperefresh.isRefreshing = false
 
                 if (response.isSuccessful) {
                     val news = response.body()

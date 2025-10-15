@@ -35,7 +35,13 @@ class SettingsFragment : Fragment() {
 
         binding.countriesRv.layoutManager = LinearLayoutManager(requireContext())
         countryViewModel.countries.observe(viewLifecycleOwner) { countries ->
-            adapter = CountryAdapter(countries)
+            adapter = CountryAdapter(countries) {
+                val selectedCountry = it.code
+                val bundle = Bundle().apply {
+                    putString("selectedCountry", selectedCountry)
+                }
+                findNavController().navigate(R.id.action_settingsFragment_to_homeFragment, bundle)
+            }
             binding.countriesRv.adapter = adapter
         }
 

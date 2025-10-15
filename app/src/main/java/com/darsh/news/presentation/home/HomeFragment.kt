@@ -36,6 +36,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val selectedCountry = arguments?.getString("selectedCountry") ?: "us"
 
         adapter = HomeAdapter(emptyList())
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -44,6 +45,7 @@ class HomeFragment : Fragment() {
         adapter.setOnItemClickListener { category ->
             val bundle = Bundle().apply {
                 putString("category", category)
+                putString("selectedCountry", selectedCountry)
             }
             findNavController().navigate(R.id.action_homeFragment_to_newsFragment, bundle)
         }

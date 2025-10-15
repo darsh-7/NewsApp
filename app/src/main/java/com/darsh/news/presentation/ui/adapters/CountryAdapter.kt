@@ -3,9 +3,13 @@ package com.darsh.news.presentation.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.darsh.news.data.remote.data_model.Country
 import com.darsh.news.databinding.CountriesListItemBinding
 
-class CountryAdapter(private val countries: List<String>) :
+class CountryAdapter(
+    private val countries: List<Country>,
+    private val onCountryClick: (Country) -> Unit
+) :
     RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
 
     inner class CountryViewHolder(val binding: CountriesListItemBinding) :
@@ -22,7 +26,10 @@ class CountryAdapter(private val countries: List<String>) :
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         val country = countries[position]
-        holder.binding.countryName.text = country
+        holder.binding.countryName.text = country.name
+        holder.binding.btnSelectCountry.setOnClickListener {
+            onCountryClick(country)
+        }
     }
 
     override fun getItemCount(): Int = countries.size
