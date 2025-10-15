@@ -4,4 +4,10 @@
     <string name="share_news_content_description">Share</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="please_enter_your_email">please enter your email</string>
+    <string name="get_otp">get otp?</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="please_enter_verification_code">Please Enter Verification Code</string>
+    <string name="verify">Verify</string>
 </resources>
