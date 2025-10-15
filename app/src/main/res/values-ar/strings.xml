@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="news_image_content_description">صورة الخبر</string>
+    <string name="share_news_content_description">مشاركة</string>
+    <string name="hello_blank_fragment">مرحبًا، هذا فراغ مؤقت</string>
+    <string name="favourite_news_content_description">إضافة أو إزالة من المفضلة</string>
+    <string name="register">ليس لديك حساب؟ سجّل الآن</string>
+    <string name="forgot_password">هل نسيت كلمة المرور؟</string>
+    <string name="password">كلمة المرور</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="news_logo">شعار الأخبار</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="sign_up">إنشاء حساب</string>
+    <string name="sign_in">دخول</string>
+
+    <string name="already_have_an_account_sign_in">هل لديك حساب بالفعل؟ تسجيل الدخول</string>
+    <string name="you_dont_add_any_favorite_news_yet">لم تقم بإضافة أي أخبار إلى المفضلة بعد</string>
+    <string name="email_required">البريد الإلكتروني مطلوب</string>
+    <string name="invalid_email">تنسيق البريد الإلكتروني غير صحيح</string>
+    <string name="password_required">كلمة المرور مطلوبة</string>
+    <string name="verify_email">يرجى التحقق من بريدك الإلكتروني</string>
+    <string name="welcome">مرحبًا، %1$s</string>
+    <string name="login_failed">فشل تسجيل الدخول: %1$s</string>
+    <string name="username_required">اسم المستخدم مطلوب</string>
+    <string name="name_required">الاسم مطلوب</string>
+    <string name="password_length_error">يجب أن تكون كلمة المرور 6 أحرف على الأقل</string>
+    <string name="confirm_required">التأكيد مطلوب</string>
+    <string name="passwords_not_match">كلمتا المرور غير متطابقتين</string>
+    <string name="signup_failed">فشل التسجيل: %1$s</string>
+    <string name="check_inbox_verification">تحقق من صندوق الوارد أو البريد العشوائي لرسالة التحقق</string>
+    <string name="failed_send_verification">فشل إرسال رسالة التحقق: %1$s</string>
+</resources>

@@ -2,6 +2,7 @@ package com.darsh.news.presentation
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
@@ -13,9 +14,14 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.darsh.news.R
 import com.darsh.news.data.remote.data_model.Article
 import com.darsh.news.databinding.ArticleListItemBinding
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class NewsAdapter(val a: Activity, val article: Array<Article>) :
     Adapter<NewsAdapter.NewsViewHolder>() {
+
+    val viewModel = NewsViewModel()
+
     class NewsViewHolder(val binding: ArticleListItemBinding) : ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -29,6 +35,7 @@ class NewsAdapter(val a: Activity, val article: Array<Article>) :
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val binder = holder.binding
         val article = article[position]
+        val db = Firebase.firestore
 
         binder.newsTitle.text = article.title
         binder.newsSubtitle.text = article.description
@@ -50,7 +57,8 @@ class NewsAdapter(val a: Activity, val article: Array<Article>) :
                 .startChooser()
         }
 
+        binder.favorite.setOnClickListener {
+            viewModel.toggleFavorite(article)
+        }
     }
-
-
 }

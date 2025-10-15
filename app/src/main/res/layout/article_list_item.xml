@@ -48,14 +48,24 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/button_share"
+                android:layout_toStartOf="@+id/favorite"
                 android:layout_marginEnd="8dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="14sp"
                 tools:text="News Source or Short Description" />
-
+            <CheckBox
+                android:id="@+id/favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/button_share"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:button="@null"  android:padding="8dp"
+                android:drawableStart="@drawable/favorit_selector"
+                android:contentDescription="@string/favourite_news_content_description"
+                app:tint="?attr/colorControlNormal" />
             <ImageButton
                 android:id="@+id/button_share"
                 android:layout_width="wrap_content"

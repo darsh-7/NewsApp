@@ -2,4 +2,32 @@
     <string name="app_name">News</string>
     <string name="news_image_content_description" />
     <string name="share_news_content_description">Share</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favourite_news_content_description">add or remove favorite news</string>
+    <string name="register">Don\'t have an account? Register</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="news_logo">News Logo</string>
+    <string name="user_name">User Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="already_have_an_account_sign_in">Already have an account? Sign In</string>
+    <string name="you_dont_add_any_favorite_news_yet">you dont add any favorite news yet</string>
+    <string name="email_required">Email is required</string>
+    <string name="invalid_email">Invalid email format</string>
+    <string name="password_required">Password is required</string>
+    <string name="verify_email">Please verify your email</string>
+    <string name="welcome">Welcome, %1$s</string>
+    <string name="login_failed">Login failed: %1$s</string>
+    <string name="username_required">username is required</string>
+    <string name="name_required">Name is required</string>
+    <string name="password_length_error">Must be at least 6 characters</string>
+    <string name="confirm_required">Confirmation is required</string>
+    <string name="passwords_not_match">Passwords do not match</string>
+    <string name="signup_failed">Signup failed: %1$s</string>
+    <string name="check_inbox_verification">Check your Inbox/Spam for verification email</string>
+    <string name="failed_send_verification">Failed to send verification email: %1$s</string>
 </resources>
