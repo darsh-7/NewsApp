@@ -57,17 +57,14 @@ class HomeFragment : Fragment() {
                     openSettingsFragment()
                     true
                 }
-
                 R.id.favorite -> {
                     findNavController().navigate(R.id.action_homeFragment_to_favouritFragment)
                     true
                 }
-
                 R.id.logout -> {
                     logoutUser()
                     true
                 }
-
                 else -> false
             }
         }
@@ -79,6 +76,7 @@ class HomeFragment : Fragment() {
 
     private fun logoutUser() {
         authViewModel.logout()
+        authRepository.logout()
         findNavController().navigate(
             R.id.signInFragment,
             null,

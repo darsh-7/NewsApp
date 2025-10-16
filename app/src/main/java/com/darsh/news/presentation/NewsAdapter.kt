@@ -56,6 +56,24 @@ class NewsAdapter(val a: Activity, val article: Array<Article>) :
                 .setText(article.url)
                 .startChooser()
         }
+        binder.favorite.setOnClickListener {
+            // Create a new user with a first and last name
+            val post = hashMapOf(
+                "title" to article.title,
+                "url" to article.url,
+
+                )
+
+// Add a new document with a generated ID
+            db.collection("fav")
+                .add(post)
+                .addOnSuccessListener { documentReference ->
+                    Log.d("save post", "DocumentSnapshot added with ID: ${documentReference.id}")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("save post", "Error adding document", e)
+                }
+        }
 
         binder.favorite.setOnClickListener {
             viewModel.toggleFavorite(article)
