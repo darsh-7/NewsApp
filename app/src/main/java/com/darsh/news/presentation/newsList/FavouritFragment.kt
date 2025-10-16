@@ -6,27 +6,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.darsh.news.R
+import com.darsh.news.data.remote.data_model.Article
 import com.darsh.news.databinding.FragmentFavouritBinding
 import com.darsh.news.domain.model.FavNews
+import com.darsh.news.presentation.NewsViewModel
 import com.darsh.news.presentation.ui.adapters.FavoriteAdapter
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.launch
 import java.io.IOException
 
 class FavouritFragment : Fragment() {
 
     private var _binding: FragmentFavouritBinding? = null
     private val binding get() = _binding!!
-    private val db = Firebase.firestore
+    private lateinit var viewModel: NewsViewModel
     private lateinit var adapter: FavoriteAdapter
-    private val favoriteList = arrayListOf<FavNews>()
+    private val favoriteList = arrayListOf<Article>()
     private val TAG = "FavouritFragment" // Tag for logging
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentFavouritBinding.inflate(inflater, container, false)
         return binding.root
@@ -35,47 +40,36 @@ class FavouritFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = FavoriteAdapter(requireActivity(), favoriteList)
+        viewModel = ViewModelProvider(requireActivity())[NewsViewModel::class.java]
+        adapter = FavoriteAdapter(
+            requireActivity(), favoriteList,
+            onRemoveClick = { article ->
+                viewModel.toggleFavorite(article)
+            }
+        )
+
         binding.newsList.adapter = adapter
 
-        loadFavorites()
+        lifecycleScope.launch {
+            viewModel.favorites.collect { favs ->
+                adapter.favoriteNews.clear()
+                adapter.favoriteNews.addAll(favs)
+                adapter.notifyDataSetChanged()
+
+                updateUiAfterFetch()
+            }
+        }
 
         binding.swiperefresh.setOnRefreshListener {
-            loadFavorites()
+            viewModel.loadFavorites()
         }
+
         binding.backBtn.setOnClickListener {
             it.findNavController().navigate(R.id.action_FavouritFragment_to_homeFragment)
         }
-    }
 
-    private fun loadFavorites() {
-        // Start loading UI
         binding.progressCircular.visibility = View.VISIBLE
-        binding.emptyListMessage.visibility = View.GONE
-        binding.newsList.visibility = View.GONE
-        binding.swiperefresh.isRefreshing = true
-
-        db.collection("fav")
-            .get()
-            .addOnSuccessListener { result ->
-                if (_binding == null) return@addOnSuccessListener // Ensure fragment is still alive
-
-                favoriteList.clear() // Clear the list before adding new items
-                for (document in result) {
-                    // Create a FavNews object from the document data
-                    val favNews = document.toObject(FavNews::class.java)
-                    favoriteList.add(favNews)
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-
-                adapter.notifyDataSetChanged()
-                updateUiAfterFetch()
-            }
-            .addOnFailureListener { exception ->
-                if (_binding == null) return@addOnFailureListener // Ensure fragment is still alive
-                Log.w(TAG, "Error getting documents.", exception)
-                showError("Failed to load favorites: ${exception.message}")
-            }
+        viewModel.loadFavorites()
     }
 
     private fun updateUiAfterFetch() {

@@ -19,6 +19,9 @@ import com.google.firebase.firestore.firestore
 
 class NewsAdapter(val a: Activity, val article: Array<Article>) :
     Adapter<NewsAdapter.NewsViewHolder>() {
+
+    val viewModel = NewsViewModel()
+
     class NewsViewHolder(val binding: ArticleListItemBinding) : ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -72,7 +75,8 @@ class NewsAdapter(val a: Activity, val article: Array<Article>) :
                 }
         }
 
+        binder.favorite.setOnClickListener {
+            viewModel.toggleFavorite(article)
+        }
     }
-
-
 }

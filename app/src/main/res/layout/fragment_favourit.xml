@@ -16,12 +16,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
+            android:background="@color/cardview_light_background"
             android:theme="@style/ThemeOverlay.Material3.ActionBar"
-            app:title="Favorite News"
-            app:titleTextColor="@color/white"
-            app:tint="@android:color/white"
-            />
+            app:title="News App"
+            app:titleTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Main Content -->
