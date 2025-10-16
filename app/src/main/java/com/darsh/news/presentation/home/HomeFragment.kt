@@ -76,7 +76,6 @@ class HomeFragment : Fragment() {
 
     private fun logoutUser() {
         authViewModel.logout()
-        authRepository.logout()
         findNavController().navigate(
             R.id.signInFragment,
             null,
